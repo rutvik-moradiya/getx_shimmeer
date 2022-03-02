@@ -1,11 +1,33 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
+
 import 'package:confetti/confetti.dart';
 import 'package:get/get.dart';
+import 'package:untitled/screen/profile_screen/profile_screen.dart';
+import 'package:untitled/services/api_services.dart';
 
 class BaseProfileController extends GetxController {
   ConfettiController confettiController =
       ConfettiController(duration: const Duration(seconds: 2));
+  var selectedName = "".obs;
+  RxList userList = [].obs;
+  RxString userId = ''.obs;
+  RxList userDetails = [].obs;
+
+  ///Get User Details
+  getUser(String userId) async {
+    var response = await ApiService.getUserName(userId);
+    var jsonData = json.decode(response.body);
+    userDetails.add(jsonData);
+    print(userDetails.value);
+
+    update();
+    Get.toNamed(ProfileScreen.pageId);
+
+    return userDetails.toList();
+
+  }
 
   Path drawStar(Size size) {
     // Method to convert degree to radians
@@ -31,9 +53,10 @@ class BaseProfileController extends GetxController {
     return path;
   }
 
+  void onInIt() {}
+
   void dispose() {
     confettiController.dispose();
-
     super.dispose();
   }
 }

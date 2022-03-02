@@ -21,4 +21,12 @@ static Future<http.Response> getList()async{
 
   return response;
   }
+  static Future<http.Response> getUserName(String userId)async{
+    Map<String, String> header = {
+      'app-id' : '6215d40da4314349c86edb97'
+    };
+    String url = "https://dummyapi.io/data/v1/user/$userId";
+    http.Response response = await http.get(Uri.parse(url),headers: header);
+    return response;
+  }
 }

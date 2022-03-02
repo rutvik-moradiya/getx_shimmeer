@@ -1,4 +1,3 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/constant/theme_config.dart';
@@ -22,7 +21,9 @@ class MyApp extends StatelessWidget {
     );
   }
 
-}*/
+}
+/*
+
 import 'dart:async';
 import 'dart:io';
 
@@ -203,4 +204,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
+}*/
