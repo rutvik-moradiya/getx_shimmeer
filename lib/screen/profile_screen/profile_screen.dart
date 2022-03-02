@@ -42,8 +42,8 @@ class ProfileScreen extends GetView<ProfileController> {
                 const SizedBox(
                   height: 60,
                 ),
-                const Text(
-                  "Rajat Palankar"
+                 Text(
+              controller.userDetails.value.isEmpty ?    controller.userDetails.value.toString() : "Name"
                   ,style: TextStyle(
                     fontSize: 25.0,
                     color:Colors.blueGrey,
@@ -219,7 +219,10 @@ class ProfileScreen extends GetView<ProfileController> {
                     ],
 
                   ),
-                )
+                ),
+                ElevatedButton(onPressed: (){
+                  // controller.getUserList();
+                }, child: const Text("CLick")),
               ],
             ),
           ),
