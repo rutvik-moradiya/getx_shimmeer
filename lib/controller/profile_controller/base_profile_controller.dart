@@ -14,6 +14,8 @@ class BaseProfileController extends GetxController {
   RxList userList = [].obs;
   RxString userId = ''.obs;
   RxList userDetails = [].obs;
+  RxBool isLoading = false.obs;
+
 
   ///Get User Details
   getUser(String userId) async {
@@ -25,7 +27,7 @@ class BaseProfileController extends GetxController {
     update();
     Get.toNamed(ProfileScreen.pageId);
 
-    return userDetails.toList();
+    return userDetails;
 
   }
 
@@ -53,10 +55,10 @@ class BaseProfileController extends GetxController {
     return path;
   }
 
-  void onInIt() {}
 
   void dispose() {
     confettiController.dispose();
     super.dispose();
   }
+
 }

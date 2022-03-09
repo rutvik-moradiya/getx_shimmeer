@@ -1,7 +1,10 @@
 import 'base_profile_controller.dart';
-class ProfileController extends BaseProfileController{
+
+class ProfileController extends BaseProfileController {
   @override
   void errorHandler(e) {}
+
+
 
 /*  ConfettiController confettiController=  ConfettiController(duration: Duration(seconds: 5));
   Path drawStar(Size size) {
