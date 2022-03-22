@@ -1,10 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:untitled/controller/profile_controller/edit_profile_controller.dart';
+import 'package:untitled/screen/profile_screen/simpletix_screen.dart';
 
 class EditProfileScreen extends GetView<EditProfileController> {
   static const pageId = '/editprofileScreen';
@@ -17,19 +19,14 @@ class EditProfileScreen extends GetView<EditProfileController> {
             ? SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: Get.height,
-                    width: Get.width,
+                  child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.arrow_back,
                           color: Colors.black45,
                           size: 28,
-                        ),
-                        SizedBox(
-                          height: Get.height / 30,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -40,9 +37,6 @@ class EditProfileScreen extends GetView<EditProfileController> {
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        SizedBox(
-                          height: Get.height / 80,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -118,23 +112,19 @@ class EditProfileScreen extends GetView<EditProfileController> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: Get.height / 30,
-                        ),
                         Obx(() {
                           return Center(
                             child: ProgressButton.icon(
                                 maxWidth: Get.width,
-                                // minWidth: 50.0,
+                                minWidth: Get.width,
                                 iconedButtons: {
                                   ButtonState.idle: IconedButton(
                                       text: "Send",
                                       icon:
                                           Icon(Icons.send, color: Colors.white),
-                                      color: Colors.red.shade500),
+                                      color: Colors.grey),
                                   ButtonState.loading: IconedButton(
-                                      text: "Loading",
-                                      color: Colors.green.shade400),
+                                      text: "Loading", color: Colors.blue),
                                   ButtonState.fail: IconedButton(
                                       text: "Failed",
                                       icon: Icon(Icons.cancel,
@@ -154,9 +144,6 @@ class EditProfileScreen extends GetView<EditProfileController> {
                                 state: controller.stateOnlyText.value),
                           );
                         }),
-                        SizedBox(
-                          height: Get.height / 5,
-                        ),
                         Row(
                           children: [
                             Icon(Icons.arrow_back),
@@ -262,7 +249,6 @@ class EditProfileScreen extends GetView<EditProfileController> {
                                     )
                                   ],
                                 ),
-
                                 ElevatedButton(
                                     onPressed: () {},
                                     child: Text(
@@ -273,7 +259,6 @@ class EditProfileScreen extends GetView<EditProfileController> {
                                         primary: Colors.white,
                                         side: BorderSide(
                                             width: 2, color: Colors.blue))),
-
                                 ElevatedButton(
                                     onPressed: () {},
                                     child: Text(
@@ -281,11 +266,49 @@ class EditProfileScreen extends GetView<EditProfileController> {
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                        primary: Colors.green,)),
+                                      primary: Colors.green,
+                                    )),
                               ],
                             ),
                           ),
                         ),
+                        Container(
+                          height: 500,
+                          child: ListView.builder(
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return Dismissible(
+                                  direction: DismissDirection.horizontal,
+                                  secondaryBackground: slideRightBackground(),
+                                  background: slideLeftBackground(),
+                                  confirmDismiss: (direction) async {
+                                    if (direction ==
+                                        DismissDirection.endToStart) {
+                                      print("SucessFully Scrolled $index");
+                                    } else if (direction ==
+                                        DismissDirection.startToEnd) {
+                                      print("Delete Scrolled $index");
+                                    }
+                                  },
+                                  key: Key("$index key"),
+                                  child: InkWell(
+                                    onTap: () {
+                                      print("$index printed");
+                                    },
+                                    child: ListTile(
+                                      focusColor: Colors.grey,
+                                      tileColor: Colors.blueGrey,
+                                      title: Text("Hello $index"),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Get.toNamed(SimpleTixScreen.pageId);
+                            },
+                            child: Text("SImpleTix_screen"))
                       ],
                     ),
                   ),
@@ -293,4 +316,46 @@ class EditProfileScreen extends GetView<EditProfileController> {
               )
             : SafeArea(child: LinearProgressIndicator()));
   }
+}
+
+Widget slideRightBackground() {
+  return Container(
+    color: Colors.green,
+    child: Align(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            Icons.check,
+            color: Colors.white,
+          ),
+        ],
+      ),
+      alignment: Alignment.centerLeft,
+    ),
+  );
+}
+
+Widget slideLeftBackground() {
+  return Container(
+    color: Colors.red,
+    child: Align(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            Icons.close,
+            color: Colors.white,
+          ),
+        ],
+      ),
+      alignment: Alignment.centerLeft,
+    ),
+  );
 }

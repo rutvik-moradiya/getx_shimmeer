@@ -226,24 +226,24 @@ class ProfileScreen extends GetView<ProfileController> {
                     ? const SizedBox(
                         child: CircularProgressIndicator(),
                       )
-                    : SizedBox(child: const Text("CLick"))),
+                    : const SizedBox(child: Text("CLick"))),
             CustomPaint(
               child: Padding(
                 padding: EdgeInsets.all(30.0),
-                child: Container(
+                child: SizedBox(
                   width: Get.width,
                   // height: 500,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "John Doe",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -256,7 +256,7 @@ class ProfileScreen extends GetView<ProfileController> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     "Order",
                                     style: TextStyle(
@@ -374,57 +374,73 @@ class ProfileScreen extends GetView<ProfileController> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text("Flex Event 20 \nApr1 Section:\nOne",
+                                Text(
+                                  "Flex Event 20 \nApr1 Section:\nOne",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("0.0",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "0.0",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("1",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "1",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("0.0",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "0.0",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text("Flex Event 20 \nApr1 Section:\nOne",
+                                Text(
+                                  "Flex Event 20 \nApr1 Section:\nOne",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("0.0",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "0.0",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("1",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "1",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
-                                Text("0.0",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "0.0",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),),
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ],
                             ),
-
                           ],
                         ),
-                      )
+                      ),
+
                     ],
                   ),
                 ),
@@ -433,7 +449,7 @@ class ProfileScreen extends GetView<ProfileController> {
                   Size(Get.width, (Get.width * 1.1226666666666667).toDouble()),
               //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
               painter: RPSCustomPainter(),
-            )
+            ),
           ],
         ),
       ),

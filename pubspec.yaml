@@ -55,6 +55,8 @@ dev_dependencies:
   http: ^0.13.4
   progress_state_button: ^1.0.4
   dropdown_button2: ^1.2.1
+  webview_flutter: ^3.0.1
+#  flutter_stripe: ^2.4.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

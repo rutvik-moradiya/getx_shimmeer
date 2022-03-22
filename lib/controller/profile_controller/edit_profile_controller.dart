@@ -13,6 +13,7 @@ class EditProfileController extends BaseProfileController {
   void onInit()  {
     confettiController.play();
      getUserList();
+
     super.onInit();
   }
  bool isLoad = true;
